@@ -90,6 +90,14 @@ $('#prevMonth').click(function(){
     TodayTime.setMonth(EventCalendar.CurrentMonth-1);
     EventCalendar.CurrentMonth=TodayTime.getMonth();
     EventCalendar.CurrentYear=TodayTime.getFullYear();
+    $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
+    tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
+    $('#cal-dates').html(tableData);
+});
+$('#currentMonth').click(function(){
+    TodayTime=new Date();
+    EventCalendar.CurrentMonth=TodayTime.getMonth();
+    EventCalendar.CurrentYear=TodayTime.getFullYear();
     console.log(TodayTime);
     console.log(EventCalendar.GetDaysInMonth());
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
@@ -100,8 +108,6 @@ $('#nextMonth').click(function(){
     TodayTime.setMonth(EventCalendar.CurrentMonth+1);
     EventCalendar.CurrentMonth=TodayTime.getMonth();
     EventCalendar.CurrentYear=TodayTime.getFullYear();
-    console.log(TodayTime);
-    console.log(EventCalendar.GetDaysInMonth());
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
