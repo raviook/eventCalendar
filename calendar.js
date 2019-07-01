@@ -93,6 +93,7 @@ $('#prevMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
+    EventCalendar.DragEvent();
 });
 $('#currentMonth').click(function(){
     TodayTime=new Date();
@@ -103,6 +104,7 @@ $('#currentMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
+    EventCalendar.DragEvent();
 });
 $('#nextMonth').click(function(){
     TodayTime.setMonth(EventCalendar.CurrentMonth+1);
@@ -111,4 +113,5 @@ $('#nextMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
+    EventCalendar.DragEvent();
 });
