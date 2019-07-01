@@ -43,15 +43,16 @@ table{
 .event{
   top: 0;
   left: 0;
-  position:absolute;
+  position:relative;
   width: 100%;
   background: #158a73;
   color: #fff;
   padding: 2px;
   font-size: 14px;
+  
 }
 .out-span{
-  position: relative;
+  position: absolute;
   top: 0;
   width: 100%;
   left: 0;
