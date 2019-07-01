@@ -54,7 +54,7 @@ var EventCalendar={
         var count = 1;      
         for(; col<=6; col++){
             var td = document.createElement('td');
-            td.innerHTML = count+'<span class="event" id='+count+' draggable="true">Event '+count+'</span>';
+            td.innerHTML = count+'<br/><span class="event" id='+count+' draggable="true"><span>Event '+count+'</span></span>'+'<br/>';
             count++;
             tr.appendChild(td);
         }

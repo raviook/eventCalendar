@@ -41,15 +41,20 @@ table{
   color:#333;
 }
 .event{
-  top: 0;
-  left: 0;
+  
   position:relative;
   width: 100%;
   background: #158a73;
   color: #fff;
-  padding: 2px;
+  border: 3px solid #eee;
   font-size: 14px;
-  
+  margin-bottom:5px;
+
+}
+.event span{
+  padding:2px;
+  background: #158a73;
+  width:100%;
 }
 .out-span{
   position: absolute;
