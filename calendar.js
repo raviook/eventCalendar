@@ -1,7 +1,7 @@
 var TodayTime=new Date();
-var notificationHtml='<a href="www.google.com" target="_blank"><img src="fb_logo.png" style="width:20px; height:20px" alt="fb_logo"><span>&#215;#fb_num#</span></a>'+
-'<a href="www.google.com" target="_blank"><img src="insta_logo.png" style="width:20px; height:20px" alt="insta_logo"><span>&#215;#insta_num#</span></a> '+
-'<a href="www.google.com" target="_blank"><img src="google_logo.png" style="width:20px; height:20px" alt="google_logo"><span>&#215;#google_num#</span></a>';
+var notificationHtml='<img src="fb_logo.png" style="width:20px; height:20px" alt="fb_logo"><span>&#215;#fb_num#</span>'+
+'<img src="insta_logo.png" style="width:20px; height:20px" alt="insta_logo"><span>&#215;#insta_num#</span>'+
+'<img src="google_logo.png" style="width:20px; height:20px" alt="google_logo"><span>&#215;#google_num#</span>';
 var EventCalendar={
     DaysName:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
     MonthsName:['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -48,7 +48,7 @@ var EventCalendar={
         if(isDataAvailable){
             return tempHtml;
         }
-        return '';
+        return null;
     },
     CreateCalendar:function(numberOfDaysInMonth,firstDayOfMonth){
         var table = document.createElement('table');    
@@ -77,7 +77,12 @@ var EventCalendar={
         for(; col<=6; col++){
             var td = document.createElement('td');
             var notificationData=this.GetNotificationHtml(count);
-            td.innerHTML = count+'<br/><div class="event" id='+count+' draggable="true">'+notificationData+'</div>'+'<br/>';
+            if(notificationData!=null){
+                td.innerHTML = count+'<br/><button type="button" data-toggle="modal" data-target="#calendarModal" value="">'+notificationData+'</button><br/>';
+            }else{
+                td.innerHTML = count;
+            }
+            
             count++;
             tr.appendChild(td);
         }
@@ -94,7 +99,11 @@ var EventCalendar={
                 }
                 var td = document.createElement('td');
                 var notificationData=this.GetNotificationHtml(count);
-                td.innerHTML = count+'<br/><div class="event" id='+count+' draggable="true">'+notificationData+'</div>'+'<br/>';
+                if(notificationData!=null){
+                    td.innerHTML = count+'<br/><button type="button" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
+                }else{
+                    td.innerHTML = count;
+                }
                 count++;
                 tr.appendChild(td);
             }
@@ -139,3 +148,9 @@ $('#nextMonth').click(function(){
     $('#cal-dates').html(tableData);
     EventCalendar.DragEvent();
 });
+
+
+$( "[data-id]" ).on( "click", function () {
+    var tempVal=$(this).val();
+    $('#modelBodyData').html('<h2>'+tempVal+'</h2>');
+} );
