@@ -133,7 +133,7 @@ $('#prevMonth').click(function(){
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
     EventCalendar.InitModalEvent();
-});j-
+});
 $('#currentMonth').click(function(){
     TodayTime=new Date();
     EventCalendar.CurrentMonth=TodayTime.getMonth();
