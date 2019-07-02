@@ -51,11 +51,11 @@ table{
   margin-bottom:5px;
 
 }
-.event span{
+/* .event span{
   padding:2px;
   background: #158a73;
   width:100%;
-}
+} */
 .out-span{
   position: absolute;
   top: 0;
