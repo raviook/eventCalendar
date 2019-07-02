@@ -1,7 +1,7 @@
 var TodayTime=new Date();
-var notificationHtml='<img src="fb_logo.png" style="width:20px; height:20px" alt="fb_logo"><span>&#215;#fb_num#</span>'+
-'<img src="insta_logo.png" style="width:20px; height:20px" alt="insta_logo"><span>&#215;#insta_num#</span>'+
-'<img src="google_logo.png" style="width:20px; height:20px" alt="google_logo"><span>&#215;#google_num#</span>';
+var notificationHtml='<div class="notif"><img src="fb_logo.png" alt="fb_logo"><p>#fb_num#</p></div>'+
+'<div class="notif"><img src="insta_logo.png" alt="insta_logo"><p>#insta_num#</p></div>'+
+'<div class="notif"><img src="google_logo.png" alt="google_logo"><p>#google_num#</p></div>';
 var EventCalendar={
     DaysName:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
     MonthsName:['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -55,7 +55,7 @@ var EventCalendar={
         var tr = document.createElement('tr');
         for(var col=0; col<=6; col++){
             var td = document.createElement('td');
-            var gun = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            var gun = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             td.innerHTML = gun[col];
             tr.appendChild(td);
         }
@@ -100,7 +100,7 @@ var EventCalendar={
                 var td = document.createElement('td');
                 var notificationData=this.GetNotificationHtml(count);
                 if(notificationData!=null){
-                    td.innerHTML = count+'<br/><button type="button" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
+                    td.innerHTML = count+'<br/><button type="button" class="custm-btn" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
                 }else{
                     td.innerHTML = count;
                 }
