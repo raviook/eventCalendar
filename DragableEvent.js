@@ -32,23 +32,19 @@ var EventCalendar={
            });
     },
     OrderData:['{"day":1,"fb":2,"insta":3,"google":3}','{"day":12,"fb":12,"insta":13,"google":14}','{"day":30,"fb":20,"insta":30,"google":35}'],
-    GetNotificationHtml:function(dayNum){   
+    GetNotificationHtml:function(dayNum){
+        
         var tempHtml=notificationHtml;
-        var isDataAvailable=false;
         $.each(EventCalendar.OrderData, function(index, item) {
             var obj = JSON.parse(item);
             if(obj.day==dayNum){
                 tempHtml=tempHtml.replace('#fb_num#',obj.fb);
                 tempHtml=tempHtml.replace('#insta_num#',obj.insta);
                 tempHtml=tempHtml.replace('#google_num#',obj.google);
-                isDataAvailable=true;
                return false;
             }
         });
-        if(isDataAvailable){
-            return tempHtml;
-        }
-        return '';
+        return tempHtml;
     },
     CreateCalendar:function(numberOfDaysInMonth,firstDayOfMonth){
         var table = document.createElement('table');    
@@ -77,6 +73,7 @@ var EventCalendar={
         for(; col<=6; col++){
             var td = document.createElement('td');
             var notificationData=this.GetNotificationHtml(count);
+            console.log(notificationData);
             td.innerHTML = count+'<br/><div class="event" id='+count+' draggable="true">'+notificationData+'</div>'+'<br/>';
             count++;
             tr.appendChild(td);
@@ -93,8 +90,7 @@ var EventCalendar={
                     return table;
                 }
                 var td = document.createElement('td');
-                var notificationData=this.GetNotificationHtml(count);
-                td.innerHTML = count+'<br/><div class="event" id='+count+' draggable="true">'+notificationData+'</div>'+'<br/>';
+                td.innerHTML = count;
                 count++;
                 tr.appendChild(td);
             }
