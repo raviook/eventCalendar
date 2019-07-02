@@ -78,7 +78,7 @@ var EventCalendar={
             var td = document.createElement('td');
             var notificationData=this.GetNotificationHtml(count);
             if(notificationData!=null){
-                td.innerHTML = count+'<br/><button type="button" class="custm-btn" data-toggle="modal" data-target="#calendarModal" value="">'+notificationData+'</button><br/>';
+                td.innerHTML = count+'<br/><button type="button" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
             }else{
                 td.innerHTML = count;
             }
@@ -110,6 +110,12 @@ var EventCalendar={
             table.appendChild(tr);
         }
         return table;
+    },
+    InitModalEvent:function(){
+        $( "[data-id]" ).on( "click", function () {
+            var tempVal=$(this).val();
+            $('#modelBodyData').html('<h2>'+tempVal+'</h2>');
+        } );
     }
 }
 
@@ -118,7 +124,7 @@ EventCalendar.CurrentYear=TodayTime.getFullYear();
 $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
 var tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
 $('#cal-dates').html(tableData);
-EventCalendar.DragEvent();
+EventCalendar.InitModalEvent();
 $('#prevMonth').click(function(){
     TodayTime.setMonth(EventCalendar.CurrentMonth-1);
     EventCalendar.CurrentMonth=TodayTime.getMonth();
@@ -126,7 +132,7 @@ $('#prevMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
-    EventCalendar.DragEvent();
+    EventCalendar.InitModalEvent();
 });
 $('#currentMonth').click(function(){
     TodayTime=new Date();
@@ -137,7 +143,7 @@ $('#currentMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
-    EventCalendar.DragEvent();
+    EventCalendar.InitModalEvent();
 });
 $('#nextMonth').click(function(){
     TodayTime.setMonth(EventCalendar.CurrentMonth+1);
@@ -146,11 +152,6 @@ $('#nextMonth').click(function(){
     $('#monthYearBanner').html(EventCalendar.MonthsName[EventCalendar.CurrentMonth]+' '+EventCalendar.CurrentYear);
     tableData=EventCalendar.CreateCalendar(EventCalendar.GetDaysInMonth(),EventCalendar.GetDayNumberOfFirstDate());
     $('#cal-dates').html(tableData);
-    EventCalendar.DragEvent();
+    EventCalendar.InitModalEvent();
 });
 
-
-$( "[data-id]" ).on( "click", function () {
-    var tempVal=$(this).val();
-    $('#modelBodyData').html('<h2>'+tempVal+'</h2>');
-} );
