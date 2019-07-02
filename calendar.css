@@ -29,11 +29,13 @@ body {font-family: Verdana, sans-serif;}
 table{
   width:100%;
 }
+
 #cal-dates>table>tr>td{
-  padding: 30px 0px;
+  padding: 40px 0px;
   background: #eee;
   width:14%;
   text-align:center;
+  border:1px solid #fff;
   position:relative;
 }
 #cal-dates>table>tr:nth-child(1) td{
@@ -41,7 +43,6 @@ table{
   color:#333;
 }
 .event{
-  
   position:relative;
   width: 100%;
   background: #158a73;
@@ -51,11 +52,44 @@ table{
   margin-bottom:5px;
 
 }
-/* .event span{
-  padding:2px;
-  background: #158a73;
-  width:100%;
-} */
+.custm-btn{
+  position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background:transparent;
+    border: 1px solid transparent;
+    padding: 4px 2px;
+    outline: none;
+}
+.custm-btn img{
+  width: 25px;
+    height: 25px;
+}
+ .notif{
+  display: inline-block;
+    margin: 0px 10px;
+    outline: none;
+  
+}
+.btn-class-n{
+  background:#fff;
+  color:#158a73;
+  font-size:14px;
+  border:1px solid #fff;
+}
+.notif p{
+  display: inline-block;
+  background: #ec2024fe;
+  border-radius: 50%;
+  width: 25px;
+  color:#fff;
+  position: absolute;
+  padding: 1px;
+  margin-left: -10px;
+  margin-top: -14px;
+  height: 25px;
+}
 .out-span{
   position: absolute;
   top: 0;
@@ -66,9 +100,21 @@ table{
 @media(max-width:768px){
   .month ul {
     width:100%;
+    text-align: center;
   }
   .month ul:nth-child(2){
-  text-align:left;
+  text-align:center;
+}
+.notif{
+    margin: 10px 10px;
+  
+}
+.custm-btn{
+  position: relative;
+  bottom:0px;
+}
+#cal-dates>table>tr>td {
+  padding: 40px 0px 10px 0px;
 }
 
   }
