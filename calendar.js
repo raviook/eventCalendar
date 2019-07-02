@@ -78,7 +78,7 @@ var EventCalendar={
             var td = document.createElement('td');
             var notificationData=this.GetNotificationHtml(count);
             if(notificationData!=null){
-                td.innerHTML = count+'<br/><button type="button" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
+                td.innerHTML = count+'<br/><button type="button" class="custm-btn" data-toggle="modal" data-target="#calendarModal" data-id="notificationBtn" value="'+count+'">'+notificationData+'</button><br/>';
             }else{
                 td.innerHTML = count;
             }
